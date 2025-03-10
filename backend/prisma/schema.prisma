@@ -7,23 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id           Int      @id @default(autoincrement())
-  username     String   @unique
-  password     String
-  role         Role     @default(DISPATCHER)
-  createdAt    DateTime @default(now())
-  createdById  Int?     
-  createdBy    User?    @relation("UserCreation", fields: [createdById], references: [id])
-  createdUsers User[]   @relation("UserCreation")
-}
-
-enum Role {
-  ADMIN
-  LOGISTIC
-  DISPATCHER
-}
-
 model vehicles {
   id            Int       @id @default(autoincrement())
   owner         String    @db.VarChar(255)
@@ -35,4 +18,24 @@ model vehicles {
   time_in       DateTime? @default(now()) @db.DateTime(0)
   time_out      DateTime? @db.DateTime(0)
   time_inside   Int?
+}
+
+model users {
+  id          Int        @id @default(autoincrement())
+  username    String     @unique
+  password    String
+  email       String     @unique
+  role        users_role @default(DISPATCHER)
+  createdAt   DateTime   @default(now())
+  createdById Int?
+  users       users?     @relation("usersTousers", fields: [createdById], references: [id])
+  other_users users[]    @relation("usersTousers")
+
+  @@index([createdById], map: "users_createdById_fkey")
+}
+
+enum users_role {
+  ADMIN
+  LOGISTIC
+  DISPATCHER
 }
