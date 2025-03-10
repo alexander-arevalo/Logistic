@@ -2,7 +2,7 @@
 
 A role-based logistics management system with QR scanning capabilities, built with Next.js, TypeScript, and MariaDB.
 
-![App Preview](https://via.placeholder.com/800x400.png?text=App+Screenshot+Preview) <!-- Add real screenshot later -->
+<!--![App Preview](https://via.placeholder.com/800x400.png?text=App+Screenshot+Preview)  Add real screenshot later -->
 
 ## Features
 
@@ -23,7 +23,7 @@ A role-based logistics management system with QR scanning capabilities, built wi
 ## Tech Stack
 
 **Frontend**  
-- Next.js 14 (App Router)
+- Next.js 15 (App Router)
 - TypeScript
 - MUI (Material-UI) + Tailwind CSS
 - React QR Scanner
